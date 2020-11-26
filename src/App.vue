@@ -1,60 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+  <div id="root">
+    <h1>{{ title }}</h1>
+
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
+      <li v-bind:key="digi.img" v-for="digi of digis">
+        <img :src="digi.img" :alt="digi.name">
+        <p>{{ digi.name }}</p>
+      </li>
     </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default{
+    data(){
+        return {
+          title: 'Digigram',
+          digis: []
+      }
+
+    },
+    created(){
+      alert('hi');
+      const digisPromise = this.$http
+      .get('https://digimon-api.herokuapp.com/api/digimon/level/rookie')
+      .then(res => {
+        res.json().then(digis => this.digis = digis);
+        })
+      .catch(err => console.log(err));
+
+      console.log(digisPromise);
     }
+
   }
-}
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#root{
+}
+#root ul {
+ display: flex;
+ width: 900px;
+
 }
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
