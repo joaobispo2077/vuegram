@@ -4,8 +4,7 @@
         <div class="painel">
           <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
           <transition name="panel-fade">
-            <div  class="painel-conteudo" v-show="visible">
-              
+            <div  class="painel-conteudo" v-show="visible">              
               <slot></slot>
             </div>
             </transition>

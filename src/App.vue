@@ -11,7 +11,7 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-bind:key="foto.url" v-for="foto in fotosComFiltro">
         <Panel :picture="foto">
-          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+         <ImageResponsive :url="foto.url" :title="foto.titulo" />
         </Panel>
       </li>
     </ul>
@@ -20,11 +20,13 @@
 </template>
 
 <script>
-import Panel from './components/shared/Panel';
+import Panel from './components/shared/Panel/Panel';
+import ImageResponsive from './components/shared/image-responsive/imageResponsive';
 
 export default {
   components: {
-    'Panel': Panel
+    'Panel': Panel,
+    'ImageResponsive': ImageResponsive
   },
 
   data(){
@@ -82,9 +84,7 @@ export default {
     display: inline-block;
   }
 
-  .imagem-responsiva {
-    width: 100%;
-  }
+
 
   .filtro{
     width: 100%;
