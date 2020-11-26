@@ -2,12 +2,12 @@
 
 <template>
         <div class="painel">
-          <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
           <transition name="panel-fade">
             <div  class="painel-conteudo" v-show="visible">              
               <slot></slot>
             </div>
             </transition>
+          <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
         </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
     display: inline-block;
     margin: 5px;
     box-shadow: 5px 5px 10px grey;
-    width: 200px;
+    max-width: 225px;
     height: 100%;
     vertical-align: top;
     text-align: center;
@@ -43,7 +43,7 @@ export default {
   .painel .painel-titulo {
     text-align: center;
     border: solid 2px;
-    background: lightblue;
+    background: lightgreen;
     margin: 0 0 15px 0;
     padding: 10px;
     text-transform: uppercase;

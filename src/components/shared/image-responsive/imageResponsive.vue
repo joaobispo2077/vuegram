@@ -12,7 +12,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .imagem-responsiva {
   width: 100%;
 }
