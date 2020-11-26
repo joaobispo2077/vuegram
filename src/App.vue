@@ -1,47 +1,66 @@
-<template>
-  <div id="root">
-    <h1>{{ title }}</h1>
+<!-- alurapic/src/App.vue -->
 
-    <ul>
-      <li v-bind:key="digi.img" v-for="digi of digis">
-        <img :src="digi.img" :alt="digi.name">
-        <p>{{ digi.name }}</p>
+<template>
+  <div class="corpo">
+
+    <h1 class="centralizado">{{ titulo }}</h1>
+
+    <ul class="lista-fotos">
+      <li class="lista-fotos-item" v-bind:key="foto.url" v-for="foto in fotos">
+        <Panel :picture="foto">
+          <img :src="foto.url" :alt="foto.titulo">
+        </Panel>
       </li>
     </ul>
-    
+
   </div>
 </template>
 
 <script>
-  export default{
-    data(){
+import Panel from './components/shared/Panel';
+
+export default {
+  components: {
+    'Panel': Panel
+  },
+
+  data(){
         return {
-          title: 'Digigram',
-          digis: []
+          title: 'Vuegram',
+          fotos: []
       }
 
     },
     created(){
       alert('hi');
-      const digisPromise = this.$http
-      .get('https://digimon-api.herokuapp.com/api/digimon/level/rookie')
-      .then(res => {
-        res.json().then(digis => this.digis = digis);
-        })
-      .catch(err => console.log(err));
 
-      console.log(digisPromise);
+      this.$http
+      .get('http://localhost:3333/v1/fotos')
+        .then(res => res.json())
+        .then(fotos => this.fotos = fotos)
+        .catch(err => console.log(err));
     }
 
   }
 </script>
+
 <style>
-#root{
-}
-#root ul {
- display: flex;
- width: 900px;
 
-}
+  .centralizado {
+    text-align: center;
+  }
 
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 96%;
+  }
+
+  .lista-fotos {
+    list-style: none;
+  }
+
+  .lista-fotos .lista-fotos-item {
+    display: inline-block;
+  }
 </style>
