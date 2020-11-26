@@ -2,12 +2,11 @@
 
 <template>
         <div class="painel">
-          <h2 class="painel-titulo">{{picture.titulo}}</h2>
-          <slot class="painel-conteudo">
-
-
-
-          </slot>
+          <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
+          <div  class="painel-conteudo" v-show="visible">
+            <slot>
+            </slot>
+          </div>
         </div>
 </template>
 
@@ -15,11 +14,17 @@
 export default {
   props: [
     'picture'
-    ]
+    ],
+
+    data() {
+      return {
+        visible: true
+      }
+    }
 }
 </script>
-
-<style>
+<style scoped>
+/* scoped aplica os estilos somente nesse componente */
   /* estilo do painel */ 
 
    .painel {
@@ -41,5 +46,9 @@ export default {
     margin: 0 0 15px 0;
     padding: 10px;
     text-transform: uppercase;
+  }
+
+  * {
+    box-shadow: 5px 5px 10px black;
   }
 </style>

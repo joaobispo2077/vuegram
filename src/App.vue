@@ -5,10 +5,13 @@
 
     <h1 class="centralizado">{{ titulo }}</h1>
 
+    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por título">
+    {{filtro}}
+
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-bind:key="foto.url" v-for="foto in fotos">
+      <li class="lista-fotos-item" v-bind:key="foto.url" v-for="foto in fotosComFiltro">
         <Panel :picture="foto">
-          <img :src="foto.url" :alt="foto.titulo">
+          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
         </Panel>
       </li>
     </ul>
@@ -26,11 +29,26 @@ export default {
 
   data(){
         return {
-          title: 'Vuegram',
-          fotos: []
+          titulo: 'Vuegram',
+          fotos: [],
+          filtro: ""
       }
 
     },
+
+    computed: {
+      fotosComFiltro(){
+
+        if (this.filtro) {
+          let regex = new RegExp(this.filtro.trim(), 'i');
+          return this.fotos.filter(foto => regex.test(foto.titulo))
+        } else {
+          return this.fotos;
+        }
+
+      }
+    },
+
     created(){
       alert('hi');
 
@@ -62,5 +80,13 @@ export default {
 
   .lista-fotos .lista-fotos-item {
     display: inline-block;
+  }
+
+  .imagem-responsiva {
+    width: 100%;
+  }
+
+  .filtro{
+    width: 100%;
   }
 </style>
