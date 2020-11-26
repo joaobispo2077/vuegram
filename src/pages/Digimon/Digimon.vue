@@ -10,7 +10,7 @@
 
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-bind:key="foto.img" v-for="foto in fotosComFiltro">
-        <Panel :picture="foto">
+        <Panel :title="foto.name">
          <ImageResponsive :url="foto.img" :title="foto.name" />
         </Panel>
       </li>

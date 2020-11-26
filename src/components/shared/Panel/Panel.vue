@@ -7,14 +7,14 @@
               <slot></slot>
             </div>
             </transition>
-          <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
+          <h2 @click="visible = !visible" class="painel-titulo">{{title}}</h2>
         </div>
 </template>
 
 <script>
 export default {
   props: [
-    'picture'
+    'title'
     ],
 
     data() {

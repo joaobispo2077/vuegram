@@ -10,7 +10,7 @@
 
     <ul class="lista-pictures">
       <li class="lista-pictures-item" v-bind:key="picture.url" v-for="picture in picturesWithFilter">
-        <Panel :picture="picture">
+        <Panel :title="picture.titulo">
          <ImageResponsive :url="picture.url" :title="picture.titulo" />
         </Panel>
       </li>
