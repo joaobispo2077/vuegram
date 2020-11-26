@@ -3,10 +3,12 @@
 <template>
         <div class="painel">
           <h2 @click="visible = !visible" class="painel-titulo">{{picture.titulo}}</h2>
-          <div  class="painel-conteudo" v-show="visible">
-            <slot>
-            </slot>
-          </div>
+          <transition name="panel-fade">
+            <div  class="painel-conteudo" v-show="visible">
+              
+              <slot></slot>
+            </div>
+            </transition>
         </div>
 </template>
 
@@ -51,4 +53,13 @@ export default {
   * {
     box-shadow: 5px 5px 10px black;
   }
+
+  .panel-fade-enter, .panel-fade-leave-active {
+    opacity: 0;
+  }
+
+  .panel-fade-enter-active, .panel-fade-leave-active  {
+    transition: opacity .25s;
+  }
+
 </style>
