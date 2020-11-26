@@ -4,17 +4,19 @@ import Cadastro from './pages/Cadastro/Cadastro';
 
 export const routes = [
   {
-    path: '', 
+    path: '/', 
     component: Digimon,
-    title: 'Digimon'
+    title: 'Home Digimon'
   },
   {
     path: '/picturesAPI',
-    component: PicturesAPI
+    component: PicturesAPI,
+    title: 'PicturesAPI'
   },  
   {
     path: '/cadastro', 
-    component: Cadastro
+    component: Cadastro,
+    title: 'Cadastro'
   },
 ];
 

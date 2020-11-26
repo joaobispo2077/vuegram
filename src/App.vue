@@ -2,16 +2,32 @@
 
 <template>
   <div class="root">
+    
+  <nav >
+    <ul>
+      <li v-bind:key="route.title" v-for="route in routes"> 
+        <router-link :to="route.path ? route.path : '/' ">
+          {{route.title}}
+        </router-link>
+      </li>
+    </ul>
+  </nav>
 
-  <router-link to="/picturesAPI">Go to picturesAPI</router-link>
-  <router-link to="/Cadastro">Go to Cadastro</router-link>
   <router-view></router-view>
   </div>
 </template>
 
 <script>
+import { routes } from './routes';
+
 
 export default {
+
+  data() {
+    return { 
+      routes
+    }
+  }
 
 }
 </script>
