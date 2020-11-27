@@ -54,7 +54,7 @@ export default {
     },
 
     created(){
-      alert('hi');
+      // alert('hi');
 
       this.$http
       .get('https://digimon-api.herokuapp.com/api/digimon/level/rookie')

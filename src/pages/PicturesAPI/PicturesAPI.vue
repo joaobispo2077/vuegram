@@ -52,13 +52,12 @@ export default {
     },
 
     created(){
-      alert('hi');
+      // alert('hi');
 
       this.$http
       .get('http://localhost:3333/v1/fotos')
         .then(res => res.json())
         .then(pictures => this.pictures = pictures)
-        .then(log())
         .catch(err => console.log(err));
     }
 
