@@ -1,13 +1,13 @@
 <!-- alurapic/src/App.vue -->
 
 <template>
-        <div class="painel">
+        <div class="panel">
           <transition name="panel-fade">
-            <div  class="painel-conteudo" v-show="visible">              
+            <div  class="panel-conteudo" v-show="visible">              
               <slot></slot>
             </div>
             </transition>
-          <h2 @click="visible = !visible" class="painel-titulo">{{title}}</h2>
+          <h2 @click="visible = !visible" class="panel-title">{{title}}</h2>
         </div>
 </template>
 
@@ -26,9 +26,9 @@ export default {
 </script>
 <style scoped>
 /* scoped aplica os estilos somente nesse componente */
-  /* estilo do painel */ 
+  /* estilo do panel */ 
 
-   .painel {
+   .panel {
     padding: 0 auto;
     border: solid 2px grey;
     display: inline-block;
@@ -40,7 +40,7 @@ export default {
     text-align: center;
   }
 
-  .painel .painel-titulo {
+  .panel .panel-title {
     text-align: center;
     border: solid 2px;
     background: lightgreen;
@@ -48,7 +48,9 @@ export default {
     padding: 10px;
     text-transform: uppercase;
   }
-
+  .panel .panel-title:hover {
+    cursor: pointer;
+  }
   * {
     box-shadow: 5px 5px 10px black;
   }
