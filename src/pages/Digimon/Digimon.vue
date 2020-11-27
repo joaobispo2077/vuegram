@@ -9,10 +9,10 @@
     <p>{{filter}}</p>
 
     <ul class="list-pictures">
-      <li class="list-pictures-item" v-bind:key="foto.img" v-for="foto in picturesWithFilter">
-        <Panel :title="foto.name">
-         <ImageResponsive :url="foto.img" :title="foto.name" />
-         <Button type="button" text="Remover" />
+      <li class="list-pictures-item" v-bind:key="picture.img" v-for="picture in picturesWithFilter">
+        <Panel :title="picture.name">
+         <ImageResponsive :url="picture.img" :title="picture.name" />
+         <Button @click.native="removePicture(picture.name)" type="button" text="Remover" />
         </Panel>
       </li>
     </ul>
@@ -37,7 +37,7 @@ export default {
   data(){
         return {
           titulo: 'Digigram',
-          fotos: [],
+          pictures: [],
           filter: ""
       }
 
@@ -48,12 +48,20 @@ export default {
 
         if (this.filter) {
           let regex = new RegExp(this.filter.trim(), 'i');
-          return this.fotos.filter(foto => regex.test(foto.name))
+          return this.pictures.filter(picture => regex.test(picture.name))
         } else {
-          return this.fotos;
+          return this.pictures;
         }
 
       }
+  },
+
+  methods: {
+    removePicture(digimon) {
+      if (confirm(`Gostaria de remover o digimon: ${digimon}?`)) {
+        alert(`Digimon removido: ${digimon}`);        
+      }
+    }
   },
 
   created(){
@@ -62,7 +70,7 @@ export default {
       this.$http
       .get('https://digimon-api.herokuapp.com/api/digimon/level/rookie')
         .then(res => res.json())
-        .then(fotos => this.fotos = fotos)
+        .then(pictures => this.pictures = pictures)
         .catch(err => console.log(err));
   }
 
