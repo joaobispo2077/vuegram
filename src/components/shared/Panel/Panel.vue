@@ -13,16 +13,16 @@
 
 <script>
 export default {
-  props: [
-    'title'
-    ],
-
-    data() {
-      return {
-        visible: true
+  
+  data() {
+    return {
+      visible: true
       }
     },
     
+    props: [
+      'title'
+      ],
 }
 </script>
 <style scoped>

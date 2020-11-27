@@ -12,6 +12,7 @@
       <li class="list-pictures-item" v-bind:key="foto.img" v-for="foto in picturesWithFilter">
         <Panel :title="foto.name">
          <ImageResponsive :url="foto.img" :title="foto.name" />
+         <Button type="button" text="Remover" />
         </Panel>
       </li>
     </ul>
@@ -22,13 +23,15 @@
 <script>
 import Panel from '../../components/shared/Panel/Panel';
 import ImageResponsive from '../../components/shared/image-responsive/imageResponsive';
+import Button from '../../components/shared/button/Button';
 
 export default {
 
 
   components: {
     'Panel': Panel,
-    'ImageResponsive': ImageResponsive
+    'ImageResponsive': ImageResponsive,
+    'Button': Button
   },
 
   data(){
@@ -38,9 +41,9 @@ export default {
           filter: ""
       }
 
-    },
+  },
 
-    computed: {
+  computed: {
       picturesWithFilter(){
 
         if (this.filter) {
@@ -51,9 +54,9 @@ export default {
         }
 
       }
-    },
+  },
 
-    created(){
+  created(){
       // alert('hi');
 
       this.$http
@@ -61,9 +64,9 @@ export default {
         .then(res => res.json())
         .then(fotos => this.fotos = fotos)
         .catch(err => console.log(err));
-    }
-
   }
+
+}
 </script>
 
 <style>

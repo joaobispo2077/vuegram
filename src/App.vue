@@ -11,20 +11,20 @@
 </template>
 
 <script>
-import { routes } from './routes';
 import Menu from './components/shared/menu/Menu';
-
+import { routes } from './routes';
 
 export default {
-components: {
-  'Menu': Menu,
-},
-
 data() {
   return {
     routes
   }
+},
+
+components: {
+  'Menu': Menu
 }
+
 
 
 }
