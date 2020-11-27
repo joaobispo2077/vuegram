@@ -1,15 +1,15 @@
 <!-- alurapic/src/App.vue -->
 
 <template>
-  <div class="corpo">
+  <div class="body">
 
-    <h1 class="centralizado">{{ titulo }}</h1>
+    <h1 class="centralized">{{ titulo }}</h1>
 
-    <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Filtre por título">
-    <p>{{filtro}}</p>
+    <input type="search" class="filter" @input="filter = $event.target.value" placeholder="Filtre por título">
+    <p>{{filter}}</p>
 
-    <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-bind:key="foto.img" v-for="foto in fotosComFiltro">
+    <ul class="list-pictures">
+      <li class="list-pictures-item" v-bind:key="foto.img" v-for="foto in picturesWithFilter">
         <Panel :title="foto.name">
          <ImageResponsive :url="foto.img" :title="foto.name" />
         </Panel>
@@ -24,6 +24,8 @@ import Panel from '../../components/shared/Panel/Panel';
 import ImageResponsive from '../../components/shared/image-responsive/imageResponsive';
 
 export default {
+
+
   components: {
     'Panel': Panel,
     'ImageResponsive': ImageResponsive
@@ -33,16 +35,16 @@ export default {
         return {
           titulo: 'Digigram',
           fotos: [],
-          filtro: ""
+          filter: ""
       }
 
     },
 
     computed: {
-      fotosComFiltro(){
+      picturesWithFilter(){
 
-        if (this.filtro) {
-          let regex = new RegExp(this.filtro.trim(), 'i');
+        if (this.filter) {
+          let regex = new RegExp(this.filter.trim(), 'i');
           return this.fotos.filter(foto => regex.test(foto.name))
         } else {
           return this.fotos;
@@ -66,28 +68,28 @@ export default {
 
 <style>
 
-  .centralizado {
+  .centralized {
     text-align: center;
   }
 
-  .corpo {
+  .body {
     font-family: Helvetica, sans-serif;
     margin: 0 auto;
     width: 96%;
     text-align: center;
   }
 
-  .lista-fotos {
+  .list-pictures {
     list-style: none;
   }
 
-  .lista-fotos .lista-fotos-item {
+  .list-pictures .list-pictures-item {
     display: inline-block;
   }
 
 
 
-  .filtro{
+  .filter{
     width: 80%;
   }
 </style>
