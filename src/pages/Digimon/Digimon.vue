@@ -1,7 +1,7 @@
 <!-- alurapic/src/App.vue -->
 
 <template>
-  <div class="body">
+  <div id="body">
 
     <h1 class="centralized">{{ titulo }}</h1>
 
@@ -67,17 +67,17 @@ export default {
 </script>
 
 <style>
-
-  .centralized {
-    text-align: center;
-  }
-
-  .body {
+  #body {
     font-family: Helvetica, sans-serif;
     margin: 0 auto;
     width: 96%;
     text-align: center;
   }
+
+  .centralized {
+    text-align: center;
+  }
+
 
   .list-pictures {
     list-style: none;

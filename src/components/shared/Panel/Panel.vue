@@ -6,7 +6,7 @@
             <div  class="panel-conteudo" v-show="visible">              
               <slot></slot>
             </div>
-            </transition>
+          </transition>
           <h2 @click="visible = !visible" class="panel-title">{{title}}</h2>
         </div>
 </template>
@@ -21,7 +21,8 @@ export default {
       return {
         visible: true
       }
-    }
+    },
+    
 }
 </script>
 <style scoped>
