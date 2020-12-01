@@ -12,7 +12,7 @@
       <li class="list-pictures-item" v-bind:key="picture.img" v-for="picture in picturesWithFilter">
         <Panel :title="picture.name">
          <ImageResponsive :url="picture.img" :title="picture.name" />
-         <Button @click.native="removePicture(picture.name)" type="button" text="Remover" />
+         <Button @activatedButton="removePicture(picture)" type="button" text="Remover" />
         </Panel>
       </li>
     </ul>
@@ -58,9 +58,7 @@ export default {
 
   methods: {
     removePicture(digimon) {
-      if (confirm(`Gostaria de remover o digimon: ${digimon}?`)) {
-        alert(`Digimon removido: ${digimon}`);        
-      }
+      alert(`Digimon removido: ${digimon.name}`);        
     }
   },
 
