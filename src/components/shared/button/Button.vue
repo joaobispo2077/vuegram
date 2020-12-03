@@ -3,8 +3,20 @@
 </template>
 
 <script>
+['type', 'text', 'confirm', 'buttonStyled']
 export default {
-  props: ['type', 'text', 'confirm', 'buttonStyled'],
+  props: {
+    type: {
+      required: true,
+      type: String
+    },
+    text: {
+      required: true,
+      type: String
+    },
+    confirm: Boolean,
+    buttonStyled: String
+  },
   computed: {
     buttonStyle() {
       if (this.buttonStyled == 'default' || !this.buttonStyled) return 'button-default';
