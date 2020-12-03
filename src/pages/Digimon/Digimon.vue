@@ -12,7 +12,13 @@
       <li class="list-pictures-item" v-bind:key="picture.img" v-for="picture in picturesWithFilter">
         <Panel :title="picture.name">
          <ImageResponsive :url="picture.img" :title="picture.name" />
-         <Button @activatedButton="removePicture(picture)" type="button" text="Remover" />
+         <Button 
+          @activatedButton="removePicture(picture)" 
+          type="button" 
+          text="Remover" 
+          :confirm="true"
+          buttonStyled="danger"
+         />
         </Panel>
       </li>
     </ul>

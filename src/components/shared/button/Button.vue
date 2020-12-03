@@ -1,16 +1,27 @@
 <template>
-  <button @click="triggeredAction()" class='button button-danger' :type="type">{{text}}</button>
+  <button @click="triggeredAction()" class="button" :class="buttonStyle" :type="type">{{text}}</button>
 </template>
 
 <script>
 export default {
-  props: ['type', 'text'],
+  props: ['type', 'text', 'confirm', 'buttonStyled'],
+  computed: {
+    buttonStyle() {
+      if (this.buttonStyled == 'default' || !this.buttonStyled) return 'button-default';
 
+      if (this.buttonStyled == 'danger') return 'button-danger';
+    }
+  },
   methods: {
     triggeredAction(){
-      if (confirm("Confirma a operação?")) {
-        this.$emit('activatedButton');
+      if (this.confirm) {
+        if (confirm("Confirma a operação?")) {
+          this.$emit('activatedButton');
+        }
+        return;        
       }
+      this.$emit('activatedButton');
+      return;    
     }
   }
 }

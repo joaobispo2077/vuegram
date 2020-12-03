@@ -12,6 +12,13 @@
       <li class="lista-pictures-item" v-bind:key="picture.url" v-for="picture in picturesWithFilter">
         <Panel :title="picture.titulo">
          <ImageResponsive :url="picture.url" :title="picture.titulo" />
+         <Button 
+          @activatedButton="removePicture(picture)"  
+          type="button" 
+          text="Remover"
+          :confirm="false"
+          buttonStyled="default"
+        />
         </Panel>
       </li>
     </ul>
@@ -21,12 +28,14 @@
 
 <script>
 import Panel from '../../components/shared/Panel/Panel';
-import ImageResponsive from '../..//components/shared/image-responsive/imageResponsive';
+import ImageResponsive from '../../components/shared/image-responsive/imageResponsive';
+import Button from '../../components/shared/button/Button';
 
 export default {
   components: {
     'Panel': Panel,
-    'ImageResponsive': ImageResponsive
+    'ImageResponsive': ImageResponsive,
+    'Button': Button
   },
 
   data(){
@@ -50,7 +59,11 @@ export default {
 
       }
     },
-
+    methods: {
+      removePicture(picture) {
+        alert(`Foto Removida: ${picture.titulo}`);
+      }
+    },
     created(){
       // alert('hi');
 
