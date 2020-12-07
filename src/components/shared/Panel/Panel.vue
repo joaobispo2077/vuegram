@@ -3,7 +3,7 @@
 <template>
         <div class="panel">
           <transition name="panel-fade">
-            <div  class="panel-conteudo" v-show="visible">              
+            <div  class="panel-content" v-show="visible">              
               <slot></slot>
             </div>
           </transition>
@@ -39,6 +39,10 @@ export default {
     height: 100%;
     vertical-align: top;
     text-align: center;
+  }
+
+  .panel-content {
+    overflow: hidden;
   }
 
   .panel .panel-title {

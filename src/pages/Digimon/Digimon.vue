@@ -11,7 +11,7 @@
     <ul class="list-pictures">
       <li class="list-pictures-item" v-bind:key="picture.img" v-for="picture in picturesWithFilter">
         <Panel :title="picture.name">
-         <ImageResponsive :url="picture.img" :title="picture.name" />
+         <ImageResponsive v-transform:rotate.animate="1.1" :url="picture.img" :title="picture.name" />
          <Button 
           @activatedButton="removePicture(picture)" 
           type="button" 
@@ -30,6 +30,7 @@
 import Panel from '../../components/shared/Panel/Panel';
 import ImageResponsive from '../../components/shared/image-responsive/imageResponsive';
 import Button from '../../components/shared/button/Button';
+import transform from '../../directives/Transform';
 
 export default {
 
@@ -39,7 +40,9 @@ export default {
     'ImageResponsive': ImageResponsive,
     'Button': Button
   },
-
+  directives: {
+    'transform': transform
+  },
   data(){
         return {
           titulo: 'Digigram',
